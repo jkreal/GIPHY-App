@@ -1,0 +1,12 @@
+.main-content {
+	height: 90vh;
+}
+
+.images {
+	background-color: gainsboro;
+	height: 60vh;
+}
+
+* {
+	font-family: 'Quicksand', cursive;
+}
