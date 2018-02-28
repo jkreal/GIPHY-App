@@ -5,26 +5,28 @@ $(document).ready(function () {
 	createButtons();
 });
 
-$(document).on("click", ".search-button", function () {
-	console.log($('#search-input').val());
-});
-
 $(document).on("click", "#btn-search", function () {
 	createButtons($.trim($('#search-input').val()));
 });
 
-$(document).on("click", ".search-del-button", removeButton);
-
-function removeButton() {
+$(document).on("click", ".search-del-button", function () {
+	var button = this;
+	// $.each(search, function (index, current) {
+	// 	if (current === $(button).attr('search-term')){
+	// 		console.log(true);
+	// 	}
+	// });
+	var index = search.indexOf($(button).attr('search-term'));
+	search.splice(index, 1);
 	$(this).parent().remove();
-	console.log(this);
-	console.log($(this).parent());
-}
+});
 
 function createButtons(searchTerm) {
 	var searchTerm = $.trim(searchTerm);
 	if (arguments.length > 0 && !search.includes(searchTerm)) {
-		search.push(searchTerm);
+		if (searchTerm !== '') {
+			search.push(searchTerm);
+		}
 	}
 
 	$('#buttons').empty();
@@ -43,8 +45,8 @@ function createButtons(searchTerm) {
 		$(button).text(term);
 
 		var buttonDelete = $('<button>');
-		$(buttonDelete).attr('search', 'btn-' + current + '-' + index);
-		$(buttonDelete).addClass('search-del-button').addClass('btn btn-danger');
+		$(buttonDelete).attr('search-term', term);
+		$(buttonDelete).addClass('search-del-button').addClass('btn btn-danger').addClass(term);
 		$(buttonDelete).html('<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>');
 
 		$(buttonGroup).append(button);

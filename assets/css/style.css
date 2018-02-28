@@ -11,12 +11,11 @@
 	font-family: 'Quicksand', cursive;
 }
 
-.search-button {
-
+.search-del-button {
+	margin-left: 20px;
 }
 
-.search-del-button {
-	height: 30px;
-	margin-right: 10px;
-	margin-left: 2px;
+.btn-group {
+	margin-left: 20px;
+	margin-bottom: 3px;
 }
