@@ -1,4 +1,5 @@
 var search = ['google', 'deadmau5', 'blink-182'];
+var gifClicked = false;
 
 $(document).ready(function () {
 	console.log("ready");
@@ -6,19 +7,31 @@ $(document).ready(function () {
 });
 
 $(document).on("click", "#btn-search", function () {
+	getImage($.trim($('#search-input').val()));
 	createButtons($.trim($('#search-input').val()));
 });
 
 $(document).on("click", ".search-del-button", function () {
 	var button = this;
-	// $.each(search, function (index, current) {
-	// 	if (current === $(button).attr('search-term')){
-	// 		console.log(true);
-	// 	}
-	// });
+
 	var index = search.indexOf($(button).attr('search-term'));
 	search.splice(index, 1);
+
+	
+
 	$(this).parent().remove();
+});
+
+$(document).on("click", ".gif-image", function () {
+	if (!gifClicked) {
+		$(this).animate({ width: '33vh' });
+		gifClicked = true;
+	}
+	else {
+		$(this).animate({ width: '21vh'});
+		gifClicked = false;
+	}
+
 });
 
 function createButtons(searchTerm) {
@@ -55,6 +68,32 @@ function createButtons(searchTerm) {
 		$('#buttons').append(buttonGroup);
 		$('#search-input').val('');
 	});
+
+}
+
+function getImage(term) {
+
+	$.ajax({
+		type: "GET",
+		url: "https://api.giphy.com/v1/gifs/random?api_key=ItHMCAF2beAU5uC3GtFXENruGY8CvR96&qtag=" + term + "&limit=3"
+	}).then(function (response) {
+		console.log(response.data.images.fixed_width.url);
+		addImage(response.data.images.fixed_width.url);
+	});
+
+
+}
+
+function addImage(image) {
+	var tempImage = $("<img>");
+	$(tempImage).attr('src', image);
+	$(tempImage).css('width', '21vh');
+	$(tempImage).addClass('gif-image');
+
+	$('.images').append(tempImage);
+}
+
+function expandImage(image) {
 
 }
 
