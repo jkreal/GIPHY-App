@@ -20,33 +20,44 @@
 <body>
 
 
+	<!-- Empty container to hold the page -->
 	<div class="container">
+		<!-- the only row? -->
+		<!-- Columns are all set so that they stack on top of each other for the most part -->
 		<div class="row">
 
+			<!-- First column is the header -->
 			<div class="col-md-12">
+				<!-- A jumbotron for added effect -->
 				<div class="jumbotron main-content">
 
 					<div class="page-header">
+						<!-- The name of the project -->
 						<h1>GIPHY App
 							<small>API Demo</small>
 						</h1>
 					</div>
 
+					<!-- A panel for the search buttons/box -->
 					<div class="panel panel-default">
 
 						<div class="panel-body">
 
 							<div class="row">
 								<div class="col-md-9">
+									<!-- Where the buttons are stored -->
 									<div class="container button-container" id="buttons">
-
+										<!-- They are generated from code. -->
 									</div>
 								</div>
 
 								<div class="col-md-3">
+									<!-- search box -->
 									<div class="input-group">
+										<!-- Text box for search -->
 										<input type="text" class="form-control" placeholder="Add..." id="search-input">
 										<span class="input-group-btn">
+											<!-- Search button -->
 											<button class="btn btn-default" type="button" id="btn-search">Search</button>
 										</span>
 									</div>
@@ -57,7 +68,8 @@
 
 					</div>
 
-					<div class="row images">
+					<!-- This is where the images are held -->
+					<div class="col-md-12 images">
 
 					</div>
 				</div>
